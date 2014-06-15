@@ -27,7 +27,7 @@
 		</p>
 		<p ng-show="user.uuids.length > 0" ng-repeat="uuid in user.uuids">
 			Device: <b>{{uuid}}</b><br>
-			Added at: <b>{{uuid_added_at[$index] | date: 'MMM d, y h:mm:ss a'}}</b>
+			Added at: <b>{{user.uuid_added_at[$index] | date: 'MMM d, y h:mm:ss a'}}</b>
 		</p>
 		<hr>
 	</div>
