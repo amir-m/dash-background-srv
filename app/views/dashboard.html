@@ -2,11 +2,13 @@
 	<h1>
 		Search for an email
 	</h1>
-	<input ng-model="query" class="form-control col-xs-4" placeholder="Search for email">
-	<button class="btn btn-success" ng-click="search()">Search</button>
+	<div>
+		<input ng-model="query" class="form-control col-xs-4" placeholder="Search for email">
+		<button class="btn btn-success" ng-click="search()">Search</button>
+	</div>
 	<div class="results" ng-repeat="user in search_results">
 		<p>Email: {{user.email}}</p>
-		<p>Created at: {{user.created_at}}</p>
+		<p>Created at: {{user.created_at | date}}</p>
 	</div>
 </div>
 <div>
