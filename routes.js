@@ -84,13 +84,13 @@ exports.postConfirmUser = function (req, res){
 			res.send(500)
 			throw error;
 		}
-		
+
 		redisClient.hmset('confirmed:'+req.param('email'), 
 			'confirmed_by', req.param('confirmed_by'), 
 			'confirmed_at', req.param('confirmed_by') );
 
-		for (var i = 0; i < user.uuids.length; ++ i) {
-			redisClient.hmset('user:'+user.uuids[i], 'email', req.param('email'), 'status', 3);
+		for (var i = 0; i < req.param('uuids').length; ++ i) {
+			redisClient.hmset('user:'+req.param('uuids')[i], 'email', req.param('email'), 'status', 3);
 		}
 		return res.send(200);
 	});
