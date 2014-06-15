@@ -55,8 +55,6 @@ exports.postSearch = function (req, res){
 };
 
 exports.postQuery = function (req, res){
-
-	if (!req.param('query')) return res.send(400);
 	
 	models.WaitingListEntry.find(req.body)
 	.exec(function(error, wles){
