@@ -72,5 +72,25 @@ exports.postConfirmUser = function (req, res){
 		|| !req.param('email') 
 		|| !req.param('uuids') ) return res.send(400);
 
-	return res.send(200);
+	models.WaitingListEntry.update({
+		email: req.param('email') 
+	}, {
+		status: 3,
+		confirmed: true,
+		confirmed_by: req.param('confirmed_by'),
+		confirmed_at: req.param('confirmed_at'),
+	}, function(error) {
+		if (error) {
+			res.send(500)
+			throw error;
+		}
+		redisClient.hmset('confirmed:'+req.param('email'), '
+			confirmed_by', req.param('confirmed_by'), 
+			'confirmed_at', req.param('confirmed_by') );
+
+		for (var i = 0; i < user.uuids.length; ++ i) {
+			redisClient.hmset('user:'+user.uuids[i], 'email', req.param('email'), 'status', 3);
+		}
+		return res.send(200);
+	});
 };
