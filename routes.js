@@ -39,7 +39,10 @@ exports.postSearch = function (req, res){
 
 	if (!req.param('query')) return res.send(400);
 
-	models.WaitingListEntry.find({ email: { $regex: req.param('query')+'*', $options: 'i' }})
+	models.WaitingListEntry.find({ email: { 
+		$regex: '\w*'req.param('query')+'\w*', 
+		$options: 'i'
+	}})
 	.exec(function(error, wles){
 		if (error) {
 			res.send(500);
