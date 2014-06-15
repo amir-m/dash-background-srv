@@ -48,7 +48,6 @@ exports.postSearch = function (req, res){
 			res.send(500);
 			throw error;
 		}
-		console.log(wles);
 		return res.send(wles);
 	});
 };
