@@ -15,6 +15,17 @@ angular.module('DashboardApp', [])
         //   }]
         // }
       })
+      .when('/dashboard', {
+        // templateUrl: '//s3.amazonaws.com/dbk-assets/main.html',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+        // resolve: {
+        //   dashes: [
+        //   'Dashloader', function(Dashloader){
+        //     return Dashloader();
+        //   }]
+        // }
+      })
       .otherwise({
         redirectTo: '/'
       });
