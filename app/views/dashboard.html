@@ -9,7 +9,7 @@
 	<br>
 	<div class="results" ng-repeat="user in search_results">
 		<p>Email: {{user.email}}</p>
-		<p>Created at: {{user.created_at | date}}</p>
+		<p>Created at: {{user.created_at | date: 'MMM d, y h:mm:ss a'}}</p>
 		<hr>
 	</div>
 </div>
