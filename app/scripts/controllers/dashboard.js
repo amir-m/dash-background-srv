@@ -12,7 +12,7 @@ angular.module('DashboardApp')
         if (!$scope.query || $scope.query.length == 0) return
 
         $http.post('/search', {
-            email: $scope.query
+            query: $scope.query
         })
         .success(function(results){
             $scope.search_results = results;
