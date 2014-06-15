@@ -34,7 +34,6 @@ exports.postLogin = function (req, res){
 
 	return res.send(401);
 };
-
 exports.postSearch = function (req, res){
 
 	if (!req.param('query')) return res.send(400);
@@ -53,9 +52,7 @@ exports.postSearch = function (req, res){
 		return res.send(wles);
 	});
 };
-
 exports.postQuery = function (req, res){
-	
 	models.WaitingListEntry.find(req.body)
 	.exec(function(error, wles){
 		if (error) {
@@ -64,4 +61,14 @@ exports.postQuery = function (req, res){
 		}
 		return res.send(wles);
 	});
+};
+exports.postConfirmUser = function (req, res){
+	if (!req.param('confirm_by') 
+		|| (req.param('confirm_by') != 'amir@dashbook.co' 
+		&& req.param('confirm_by') != 'mo@dashbook.co') 
+		|| !req.param('email') 
+		|| !req.param('uuids') ) return res.send(400);
+
+	console.log(req.body);
+	return res.send(200);
 };

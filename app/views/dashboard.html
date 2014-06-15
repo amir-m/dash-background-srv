@@ -33,7 +33,7 @@
 			<span ng-show="user.uuid_added_at[$index]">Added at: <b>{{user.uuid_added_at[$index] | date: 'MMM d, y h:mm:ss a'}}</b>
 			</span>
 		</p>
-		<button ng-show="!user.confirmed" class="btn btn-danger" ng-click="confirm(user._id)">Confirm User</button>
+		<button ng-show="!user.confirmed" class="btn btn-danger" ng-click="confirm(user)">Confirm User</button>
 		<hr>
 	</div>
 </div>

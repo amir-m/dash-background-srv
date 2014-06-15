@@ -33,5 +33,9 @@ angular.module('DashboardApp')
             throw error;
         })
     };
+    $scope.confirm = function(user) {
+        console.log(user);
+        user.confirmed = true;
+    };
   }
 ]);

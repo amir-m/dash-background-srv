@@ -22,6 +22,7 @@ module.exports = function(routes, app) {
 	app.post('/login', routes.postLogin);
 	app.post('/search', routes.postSearch);
 	app.post('/query', routes.postQuery);
+	app.post('/confirm', routes.postConfirmUser);
 	// POST
 
 
