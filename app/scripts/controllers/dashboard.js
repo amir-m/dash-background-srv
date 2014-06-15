@@ -9,8 +9,10 @@ angular.module('DashboardApp')
   function ($scope, $rootScope, $http, $location) {
 
     $scope.search = function() {
-        if (!$scope.query || $scope.query.length == 0) return
+        if (!$scope.query || $scope.query.length == 0) return;
 
+        $scope.search_results = [];
+        
         $http.post('/search', {
             query: $scope.query
         })

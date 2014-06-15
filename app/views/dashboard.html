@@ -4,6 +4,10 @@
 	</h1>
 	<input ng-model="query" class="form-control col-xs-4" placeholder="Search for email">
 	<button class="btn btn-success" ng-click="search()">Search</button>
+	<div class="results" ng-repeat="user in search_results">
+		<p>Email: {{user.email}}</p>
+		<p>Created at: {{new Date(user.created_at)}}</p>
+	</div>
 </div>
 <div>
 	<h1>
