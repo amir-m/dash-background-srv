@@ -11,11 +11,15 @@ angular.module('DashboardApp')
     $scope.search = function() {
         if (!$scope.query || $scope.query.length == 0) return;
 
+        var q = { 
+            email: { 
+                $regex: '\w*'+$scope.query+'\w*', 
+                $options: 'i'
+            }
+        };
         $scope.search_results = [];
 
-        $http.post('/search', {
-            query: $scope.query
-        })
+        $http.post('/search', q)
         .success(function(results){
             $scope.search_results = results;
         })
@@ -23,13 +27,11 @@ angular.module('DashboardApp')
             throw error;
         })
     };
-    $scope.show_all = function() {
-        if (!$scope.query || $scope.query.length == 0) return;
-
-        $scope.search_results = [];
+    $scope.show_all = function(obj) {
+        var obj = obj || {};
         
         $http.post('/search', {
-            query: $scope.query
+            query: obj
         })
         .success(function(results){
             $scope.search_results = results;
