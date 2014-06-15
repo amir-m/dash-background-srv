@@ -17,7 +17,7 @@ var models = require('./models').config(mongoose, redisClient);
 
 require('./config')(express, app, mongoose, cookie, models, redisClient);
 
-var routes = require('./routes/index')(models, redisClient, cookie);
+var routes = require('./routes').config(models, redisClient, cookie);
 
 require('./router')(routes, app);
 
