@@ -65,7 +65,7 @@ exports.postQuery = function (req, res){
 exports.postConfirmUser = function (req, res){
 	if (!req.param('confirm_by') 
 		|| (req.param('confirm_by') != 'amir@dashbook.co' 
-		&& req.param('confirm_by') != 'mo@dashbook.co') 
+		&& req.param('confirm_at') != 'mo@dashbook.co') 
 		|| !req.param('email') 
 		|| !req.param('uuids') ) return res.send(400);
 

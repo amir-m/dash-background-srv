@@ -35,7 +35,15 @@ angular.module('DashboardApp')
     };
     $scope.confirm = function(user) {
         console.log(user);
+        var obj = {
+            uuids: user.uuids,
+            email: user.email,
+            confirmed_by: $scope.user || 'amir@dashbook.co',
+            confirmed_at: new Date().getTime()
+        }
         user.confirmed = true;
+        user.confirmed_by = $scope.user || 'amir@dashbook.co';
+        user.confirmed_at = new Date().getTime();
     };
   }
 ]);
