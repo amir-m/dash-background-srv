@@ -23,7 +23,8 @@ angular.module('DashboardApp', [])
           authenticate: [
             '$rootScope', '$location',
             function($rootScope, $location){
-              if (!$rootScope.logged_in) return $location.path('/');
+              // if (!$rootScope.logged_in) return $location.path('/');
+              return;
             }
           ]
         }
