@@ -14,6 +14,13 @@ module.exports = function(routes, app) {
 		res.sendfile('app/img/'+req.params[0]);
 	});
 
+	// GET
 	app.get('/', routes.getIndex);
+	// GET
+
+	// POST
+	app.post('/login', routes.postLogin);
+	// POST
+
 
 }
