@@ -8,8 +8,27 @@
 	</div>
 	<br>
 	<div class="results" ng-repeat="user in search_results">
-		<p>Email: {{user.email}}</p>
-		<p>Created at: {{user.created_at | date: 'MMM d, y h:mm:ss a'}}</p>
+		<p>Email: <b>{{user.email}}</b></p>
+		<p>Created at: <b>{{user.created_at | date: 'MMM d, y h:mm:ss a'}}</b></p>
+		<p>Created at: <b>{{user.created_at | date: 'MMM d, y h:mm:ss a'}}</b></p>
+		<p>Status: 
+			<b ng-show="user.status == 1 || user.status == '1'">
+				Waiting for Confirmation, havn't launch the app.
+			</b>
+			<b ng-show="user.status == 2 || user.status == '2'">
+				Waiting for Confirmation, launched the app</b>
+			<b ng-show="user.status == 3 || user.status == '3'">Confirmed</b>
+		</p>
+		<p ng-show="user.confirmed">
+			Confirmed at <b>{{user.confirmed_at | date: 'MMM d, y h:mm:ss a'}}</b>
+		</p>
+		<p ng-show="user.confirmed">
+			Confirmed by <b>{{user.confirmed_by | date: 'MMM d, y h:mm:ss a'}}</b>
+		</p>
+		<p ng-show="user.uuids.length > 0" ng-repeat="uuid in user.uuids">
+			Device: <b>{{uuid}}</b><br>
+			Added at: <b>{{uuid_added_at[$index] | date: 'MMM d, y h:mm:ss a'}}</b>
+		</p>
 		<hr>
 	</div>
 </div>
