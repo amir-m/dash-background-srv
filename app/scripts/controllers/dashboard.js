@@ -11,13 +11,6 @@ angular.module('DashboardApp')
     $scope.search = function() {
         if (!$scope.query || $scope.query.length == 0) return;
 
-        var q = { 
-            'email': { 
-                '$regex': '\w*'+$scope.query+'\w*', 
-                '$options': 'i'
-            }
-        };
-        console.log(q);
         $scope.search_results = [];
 
         $http.post('/search', {query: q})
@@ -32,9 +25,7 @@ angular.module('DashboardApp')
     $scope.show_all = function(obj) {
         var obj = obj || {};
         
-        $http.post('/search', {
-            query: obj
-        })
+        $http.post('/query', obj)
         .success(function(results){
             $scope.search_results = results;
         })
