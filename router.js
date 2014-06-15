@@ -14,8 +14,6 @@ module.exports = function(routes, app) {
 		res.sendfile('app/img/'+req.params[0]);
 	});
 
-	app.get('/', function(req, res){
-		res.render('index.html');
-	});
+	app.get('/', routes.getIndex);
 
 }

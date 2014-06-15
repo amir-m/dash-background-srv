@@ -17,8 +17,11 @@ angular.module('DashboardApp')
         .success(function(){
             $location.path('/dashboard');
         })
-        .error(function(){
-            $scope.error = "We couldn't authenticate you!";
+        .error(function(code){
+            if (code == 401)
+                $scope.error = "We couldn't authenticate you!";
+            else
+                $scope.error = "There was a problem with your request. Sorry!";
         })
     };
   }
