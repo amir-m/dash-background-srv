@@ -20,6 +20,7 @@ module.exports = function(routes, app) {
 
 	// POST
 	app.post('/login', routes.postLogin);
+	app.post('/search', routes.postSearch);
 	// POST
 
 
