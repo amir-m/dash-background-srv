@@ -12,11 +12,12 @@ angular.module('DashboardApp')
         if (!$scope.query || $scope.query.length == 0) return;
 
         var q = { 
-            email: { 
+            'email:' { 
                 '$regex': '\w*'+$scope.query+'\w*', 
                 '$options': 'i'
             }
         };
+        console.log(q);
         $scope.search_results = [];
 
         $http.post('/search', {query: q})
