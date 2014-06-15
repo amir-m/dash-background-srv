@@ -19,12 +19,14 @@ angular.module('DashboardApp', [])
         // templateUrl: '//s3.amazonaws.com/dbk-assets/main.html',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
-        // resolve: {
-        //   dashes: [
-        //   'Dashloader', function(Dashloader){
-        //     return Dashloader();
-        //   }]
-        // }
+        resolve: {
+          authenticate: [
+            '$rootScope', '$location',
+            function($rootScope, $location){
+              if (!$rootScope.logged_in) return $location.path('/');
+            }
+          ]
+        }
       })
       .otherwise({
         redirectTo: '/'

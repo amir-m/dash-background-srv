@@ -16,6 +16,7 @@ angular.module('DashboardApp')
         })
         .success(function(){
             $location.path('/dashboard');
+            $rootScope.logged_in = true;
         })
         .error(function(error, code){
             if (code == 401)
