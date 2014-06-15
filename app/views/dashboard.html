@@ -1,0 +1,42 @@
+<div class="dbk-wrapper">
+	<header class="dbk-header">
+		<img src="img/dbk-logo.png">
+	</header>
+
+	<div class="settings waiting-list">
+		<article class="input-comp">
+			<div ng-show="badEmail">
+				<p>
+					Wrong email address.
+				</p>
+				<p>Say hi anytime</p>
+				<a href="mailto:hello@dashbookapp.com">hello@dashbookapp.com</a>
+			</div>
+			<div ng-show="!just_registered && (user.status == 2 || user.status == '2')">
+				<p>
+					We have you on our waiting list. There are {{count}} people ahead of you in the line. We will notify you as soon as there's a spot available.
+				</p>
+				<p>Say hi anytime</p>
+				<a href="mailto:hello@dashbookapp.com">hello@dashbookapp.com</a>
+			</div>
+			<div ng-show="just_registered">
+				<p>
+					Awesome! We now have you on our waiting list. There are {{count}} people ahead of you in the line. We will notify you as soon as there's a spot available.
+				</p>
+				<p><small>Say hi anytime</small></p>
+				<a href="mailto:hello@dashbookapp.com">hello@dashbookapp.com</a>
+			</div>
+			<p ng-show="">
+				This is where you wait
+			</p>
+			<div ng-show="!just_registered && (user.status == 1 || user.status == '1')">
+				<p><small>Please enter your email here</small></p>
+				<input type="text" ng-model="email">
+				<button ng-click="register()">Submit</button>
+			</div>
+		</article>
+	</div>
+</div>
+<div class="spinner">
+	<img src="https://s3.amazonaws.com/s3.dashbook.co/dbkapp/img/spinner-icon.png">
+</div>
