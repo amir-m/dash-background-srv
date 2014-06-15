@@ -1,0 +1,94 @@
+<article id="{{d.id}}">
+	<div class="front">
+		<header>
+			<h1 class="dash-title">
+				<img class="small-icon" ng-src="{{d.icon_small}}">
+				{{d.title}} • 
+				<!-- Change d.title to d.dash_type... -->
+				<span ng-show="d.title == 'Private Dash'">
+					{{d.selected_setting || 'No Dash Selected'}}
+				</span>
+				<span ng-show="d.title != 'Private Dash'">
+					{{d.selected_setting || 'Current Location'}}
+				</span>
+			</h1>
+			<a class="settings-btn" ng-click="flipSettings()"><span></span></a>
+		</header>
+
+		<div class="viewport">
+			<div class="flipsnap" style="width:{{_width*d.content.length}}px;">
+				<!-- <section ng-repeat="content in d.content"> -->
+					<!-- 
+					<geo ng-show="d.dash_type == 'geo'"></geo>
+					<slideshow ng-show="d.dash_type == 'slideshow'"></slideshow>
+					<news ng-show="d.dash_type == 'text'"></news>
+					<stats ng-show="d.dash_type == 'stats'"></stats>
+					<private ng-show="d.dash_type == 'privateDash'"></private>  
+					-->
+					
+			</div>
+		</div>
+		
+		<p class="no-settings grey centered" ng-show="!d.content || d.content.length == 0">No content is available at this time.</p>
+
+		<div class="slide-indicator" id="pointer-{{d.id}}">
+			<span ng-repeat="content in d.content"></span>
+		</div>
+	</div>
+
+	<div class="back">
+		<header>
+			<h1><img class="small-icon" ng-src="{{d.icon_small}}">
+				{{d.title}} • <span>Settings</span></h1>
+			<a class="settings-btn" ng-click="flipSettings()"><span></span></a>
+		</header>
+
+		<div class="settings">
+			<section class="error-comp centered" ng-show="!d.has_settings">
+				<p class="grey">This dash has no settings</p>
+			</section>
+			<section class="list-comp">
+				<ul ng-show="d.setting_type == 'radio'">
+					<li ng-repeat="setting in d.settings" 
+						ng-class="{selected: setting == d.selected_setting}" 
+						ng-click="selectSetting($index)">
+						{{setting}}
+					</li>
+				</ul>
+			</section>
+			<section class="error-comp centered" style="display:none;">
+				<p class="grey">This is error...</p>
+			</section>
+			<section class="input-comp" ng-show="d.setting_type == 'textInput'">
+				<input 
+					id="{{d.id}}-input-text" 
+					class="clearable" type="text" 
+					placeholder="Search" 
+					name="search_term" 
+					value="{{d.selected_setting}}">
+				<p ng-show="d.notFound" class="grey centered">Dash Not Found!</p>
+
+				<button 
+					ng-show="d.title == 'Private Dash'" 
+					ng-click="updatePrivateDashSetting()"
+				>Save
+				</button>
+				<button 
+					ng-show="d.title != 'Private Dash'" 
+					ng-click="updateInputText()">Save</button>
+			</section>
+			<footer>
+				<a class="remove-btn" ng-click="removeDash()" id="{{d.id}}-remove-btn">
+					<span>
+						Remove
+					</span>
+				</a>					
+				<p class="credit">Powered by {{d.credits}}</p>
+			</footer>
+		</div>
+	</div>
+
+	<div class="spinner">
+		<img src="https://s3.amazonaws.com/s3.dashbook.co/dbkapp/img/spinner-icon.png">
+	</div>
+</article>
