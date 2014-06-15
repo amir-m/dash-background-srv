@@ -38,7 +38,7 @@ exports.postLogin = function (req, res){
 exports.postSearch = function (req, res){
 
 	if (!req.param('query')) return res.send(400);
-
+	console.log(req.param('query'))
 	models.WaitingListEntry.find(req.param('query'))
 	.exec(function(error, wles){
 		if (error) {

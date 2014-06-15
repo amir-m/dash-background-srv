@@ -21,6 +21,7 @@ angular.module('DashboardApp')
 
         $http.post('/search', {query: q})
         .success(function(results){
+            console.log(results);
             $scope.search_results = results;
         })
         .error(function(error, code){
