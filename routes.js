@@ -84,6 +84,7 @@ exports.postConfirmUser = function (req, res){
 			res.send(500)
 			throw error;
 		}
+		
 		redisClient.hmset('confirmed:'+req.param('email'), 
 			'confirmed_by', req.param('confirmed_by'), 
 			'confirmed_at', req.param('confirmed_by') );
