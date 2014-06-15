@@ -17,7 +17,7 @@ angular.module('DashboardApp')
         .success(function(){
             $location.path('/dashboard');
         })
-        .error(function(code){
+        .error(function(error, code){
             if (code == 401)
                 $scope.error = "We couldn't authenticate you!";
             else
