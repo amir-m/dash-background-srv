@@ -18,7 +18,7 @@ angular.module('DashboardApp', [])
       .when('/dashboard', {
         // templateUrl: '//s3.amazonaws.com/dbk-assets/main.html',
         templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
         resolve: {
           authenticate: [
             '$rootScope', '$location',
