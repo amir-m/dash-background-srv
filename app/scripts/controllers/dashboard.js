@@ -41,7 +41,7 @@ angular.module('DashboardApp')
             confirmed_by: $scope.user || 'amir@dashbook.co',
             confirmed_at: new Date().getTime()
         }
-        $http('/confirm', obj)
+        $http.post('/confirm', obj)
         .success(function(){
             user.confirmed = true;
             user.confirmed_by = $scope.user || 'amir@dashbook.co';
