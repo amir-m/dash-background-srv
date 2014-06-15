@@ -13,8 +13,8 @@ angular.module('DashboardApp')
 
         var q = { 
             email: { 
-                $regex: '\w*'+$scope.query+'\w*', 
-                $options: 'i'
+                '$regex': '\w*'+$scope.query+'\w*', 
+                '$options': 'i'
             }
         };
         $scope.search_results = [];
