@@ -9,8 +9,6 @@
 	<br>
 	<div class="results" ng-repeat="user in search_results">
 		<p>Email: <b>{{user.email}}</b></p>
-		<p>Created at: <b>{{user.created_at | date: 'MMM d, y h:mm:ss a'}}</b></p>
-		<p>Created at: <b>{{user.created_at | date: 'MMM d, y h:mm:ss a'}}</b></p>
 		<p>Status: 
 			<b ng-show="user.status == 1 || user.status == '1'">
 				Waiting for Confirmation, havn't launch the app.
@@ -20,16 +18,17 @@
 			<b ng-show="user.status == 3 || user.status == '3'">Confirmed</b>
 		</p>
 		<p ng-show="user.confirmed">
-			Confirmed at: <b>{{user.confirmed_at | date: 'MMM d, y h:mm:ss a'}}</b>
-		</p>
-		<p ng-show="user.confirmed">
 			Confirmed by: <b>{{user.confirmed_by | date: 'MMM d, y h:mm:ss a'}}</b>
 		</p>
+		<p ng-show="user.confirmed">
+			Confirmed at: <b>{{user.confirmed_at | date: 'MMM d, y h:mm:ss a'}}</b>
+		</p>
+		<p>Created at: <b>{{user.created_at | date: 'MMM d, y h:mm:ss a'}}</b></p>
 		<p ng-show="user.uuids.length > 0" ng-repeat="uuid in user.uuids">
 			Device: <b>{{uuid}}</b><br>
 			Added at: <b>{{user.uuid_added_at[$index] | date: 'MMM d, y h:mm:ss a'}}</b>
 		</p>
-		<button class="btn btn-danger" ng-click="confirm(user._id)">Confirm User</button>
+		<button ng-show="!user.confirmed" class="btn btn-danger" ng-click="confirm(user._id)">Confirm User</button>
 		<hr>
 	</div>
 </div>
