@@ -19,7 +19,7 @@ angular.module('DashboardApp')
         };
         $scope.search_results = [];
 
-        $http.post('/search', q)
+        $http.post('/search', {query: q})
         .success(function(results){
             $scope.search_results = results;
         })
