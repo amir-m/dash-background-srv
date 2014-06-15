@@ -8,20 +8,17 @@ angular.module('DashboardApp')
     '$location',
   function ($scope, $rootScope, $http, $location) {
 
-    $scope.signIn = function() {
-        $scope.error = "";
-        $http.post('/login', {
-            email: $scope.email,
-            pass: $scope.pass
+    $scope.search = function() {
+        if (!$scope.query || $scope.query.length == 0) return
+
+        $http.post('/search', {
+            email: $scope.query
         })
-        .success(function(){
-            $location.path('/dashboard');
+        .success(function(results){
+            $scope.search_results = results;
         })
         .error(function(error, code){
-            if (code == 401)
-                $scope.error = "We couldn't authenticate you!";
-            else
-                $scope.error = "There was a problem with your request. Sorry!";
+            throw error;
         })
     };
   }
